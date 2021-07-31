@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import Navigation from './Components/Navigation/Navigation.js';
+import React, {useState} from 'react';
 import './App.css';
 
+
 function App() {
+  
+  const [isSignedIn, setSignedIn] = useState();
+
+  const signIn = () => {
+    setSignedIn(true);
+    console.log('signIn: ', isSignedIn);
+  }
+
+  const signOut = () => {
+    setSignedIn(false);
+    console.log('signOut: ', isSignedIn);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navigation isSignedIn={isSignedIn} signIn={signIn} signOut={signOut}/>
+      <p onClick={signOut}>Sign Out</p>
+      <p onClick={signIn}>Sign In</p>
+      <p>Signed In? {isSignedIn? 'Yes':'Nope'}</p>
     </div>
   );
 }
