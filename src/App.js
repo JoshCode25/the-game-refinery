@@ -11,6 +11,7 @@ function App() {
     setSignedIn(true);
     console.log('signIn: ', isSignedIn);
   }
+  //Testing
 
   const signOut = () => {
     setSignedIn(false);
