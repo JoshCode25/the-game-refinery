@@ -3,15 +3,7 @@ import './Navigation.css';
 import Logo from '../Logo/Logo.js';
 import 'tachyons';
 
-const Navigation = ({isSignedIn, signIn, signOut}) => {
-    console.log('Nav', isSignedIn);
-    let loginButton;
-
-    if(isSignedIn){
-        loginButton=<a href='' onClick={signOut}>Sign Out</a>;
-    } else {
-        loginButton=<a href='' onClick={signIn}>Sign In</a>;
-    }
+const Navigation = (props) => {
 
     return (
         <nav className='bg-washed-blue flex justify-between pa2'>
@@ -20,7 +12,7 @@ const Navigation = ({isSignedIn, signIn, signOut}) => {
                 <li><a href=''>Games</a></li>
                 <li><a href=''>About</a></li>
                 <li><a href=''>Contact</a></li>
-                <li>{loginButton}</li>
+                <li>{props.children}</li>
             </ul>
         </nav>
     )
