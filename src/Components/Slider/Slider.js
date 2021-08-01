@@ -5,7 +5,7 @@ const sliderArray = sliderContent;
 
 function Slider() {
     const [slideNumber, setSlideNumber] = useState(0);
-    const [slideText, setSlideText] = useState('test');
+    const [slideText, setSlideText] = useState('');
 
     useEffect(() => {
         setSlideText(sliderArray[slideNumber].text.toUpperCase());

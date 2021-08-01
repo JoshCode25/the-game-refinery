@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function SubmitForm() {
+function SubmitForm({setRoute, setUserName}) {
     const [value, setValue] = useState('');
   
     const handleChange = (e) => {
@@ -8,18 +8,18 @@ function SubmitForm() {
     }
   
     const handleSubmit = (e) => {
-        alert('A name was submitted: ' + value);
+        setUserName(value);
         e.preventDefault();
         setValue('');
+        setRoute('home');
     }
   
       return (
         <div 
-            style={{width: 300, height: 150}} 
-            className='tc bg-light-green br3 pa3 ma2  bw2 shadow-5 flex flex-column justify-center items-center'
+            style={{width: '40%', height: 150, position: 'absolute', top: 100, left:'30%', backgroundColor: '#f56476'}} 
+            className='tc br3 pa3 ma2 bw2 shadow-5 flex flex-column justify-center items-center'
             >
-            <p className='f3'>Set Name</p>
-            <p className='f4 pv2'>Please enter your Name:</p>
+            <p className='f3 pv2'>Please enter your Name:</p>
             <form onSubmit={handleSubmit} className='f5'>
                 <label>
                     <input type="text" value={value} onChange={handleChange} />
