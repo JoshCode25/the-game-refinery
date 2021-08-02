@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import sliderContent from './sliderContent';
+import './Slider.css';
 
 const sliderArray = sliderContent;
 
@@ -24,7 +25,7 @@ function Slider() {
 
     
     return (
-        <div style={{width:'100%', height: 250}} className='flex items-center justify-center'>
+        <div id='Slider' style={{width:'100%', height: 250}} className='flex items-center justify-center'>
             <p className='f2 tc'>{slideText}</p>
         </div>
     )

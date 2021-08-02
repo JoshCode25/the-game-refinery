@@ -3,8 +3,7 @@ import React, {useState} from 'react';
 import './App.css';
 import Slider from './Components/Slider/Slider.js';
 import SubmitForm from './Components/SubmitForm/SubmitForm.js';
-import gameList from './Components/GameList/gameList.js';
-import GameCard from './Components/GameCard/GameCard.js';
+import GameBox from './Components/GameBox/GameBox.js';
 
 
 
@@ -30,7 +29,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div style={{maxWidth: '1250px', marginLeft: 'auto', marginRight: 'auto'}}>
       <Navigation userName={userName}>
         {isSignedIn && <p onClick={signOut}>Sign Out</p>}
         {!isSignedIn && <p onClick={signIn}>Set Name</p>}
@@ -38,8 +37,7 @@ function App() {
       { route === 'signIn' ?
         <SubmitForm setRoute={setRoute} setUserName={setUserName}/> : ''}
       <Slider/>
-      <GameCard game={gameList[1]}/>
-      <GameCard game={gameList[3]}/>
+      <GameBox/>
     </div>
   );
 }

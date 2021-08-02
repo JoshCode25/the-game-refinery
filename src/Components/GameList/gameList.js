@@ -61,7 +61,7 @@ const theFarmGame = creatNewGame('The Farm Game', 4.5, 2, 5, 30, 90,
 const peasantPrinceAndKing = creatNewGame('Peasant Prince & King', 2, 2, 2, 20, 40, 
     ['Resource Management', 'Duel'], "Develop your kingdom's 4 departments to defeat your opponent", 
     peasantIcon);
-const theDiceGame = creatNewGame('The Dice Game', 4, 2, 4, 15, 40, 
+const theDiceGame = creatNewGame('The Dice Game', 4, 2, 4, 15, 30, 
     ['Dice', 'Cooperative'], 'Build your local town and work with those around you to overthrow the Tyrant');
 
 
