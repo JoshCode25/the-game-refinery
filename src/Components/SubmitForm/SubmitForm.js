@@ -1,8 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 function SubmitForm({setRoute, setUserName}) {
     const [value, setValue] = useState('');
+    const inputRef = useRef(null);
   
+    useEffect(() => {
+      inputRef.current.focus();
+    }, []);
+
     const handleChange = (e) => {
       setValue(e.target.value);
     }
@@ -22,7 +27,7 @@ function SubmitForm({setRoute, setUserName}) {
             <p className='f3 pv2'>Please enter your Name:</p>
             <form onSubmit={handleSubmit} className='f5'>
                 <label>
-                    <input type="text" value={value} onChange={handleChange} />
+                    <input ref={inputRef} type="text" value={value} onChange={handleChange} />
                 </label>
                 <input type="submit" value="Submit" />
             </form>

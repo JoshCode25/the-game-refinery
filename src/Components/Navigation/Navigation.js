@@ -13,7 +13,7 @@ const Navigation = (props) => {
                 <li><a href=''>Games</a></li>
                 <li><a href=''>About</a></li>
                 <li><a href=''>Contact</a></li>
-                <li>{props.children}</li>
+                <li style={{minWidth: '140px'}}>{props.children}</li>
             </ul>
         </nav>
     )
