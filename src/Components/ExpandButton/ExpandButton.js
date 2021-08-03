@@ -1,17 +1,14 @@
 import React from 'react';
+import {createLessThan, createGreaterThan} from '../SVGBank/SVGBank.js'
 
 function ExpandButton({isExpanded, toggleExpanded}) {
 
-    let displayCharacter = '';
-    isExpanded? displayCharacter = '<' : displayCharacter = '>';
-
     return (
         <div 
-            style={{position: 'absolute', right: '0px', top: '35%', width: '40px', height: '40px',
-                    backgroundColor: 'gray', borderRadius: '50%'}} 
+            style={{position: 'absolute', right: '0px', top: '35%'}} 
             onClick={toggleExpanded} 
             className='dim pointer'>
-                <p style={{width: '100%', height: '100%'}} className='f1 tc'>{displayCharacter}</p>
+                {isExpanded? createLessThan(30, '#000', 'gray') : createGreaterThan(30, '#000', 'gray') }
         </div>
     )
 }
