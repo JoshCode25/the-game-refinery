@@ -9,7 +9,7 @@ function ExpandButton({isExpanded, toggleExpanded}) {
             onClick={toggleExpanded} 
             className='dim pointer'>
                 {isExpanded? createLessThan(30, '#000', 'gray') : createGreaterThan(30, '#000', 'gray') }
-            {createDice(200, 200, 'black', 1)}
+            {/* {createDice(200, 200, 'black', 1)} */}
         </div>
     )
 }

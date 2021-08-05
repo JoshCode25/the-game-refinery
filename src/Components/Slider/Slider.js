@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import sliderContent from './sliderContent';
-import './Slider.css';
+// import './Slider.css';
 
 const sliderArray = sliderContent;
 
