@@ -4,6 +4,7 @@ import './App.css';
 import Slider from './Components/Slider/Slider.js';
 import SubmitForm from './Components/SubmitForm/SubmitForm.js';
 import GameBox from './Components/GameBox/GameBox.js';
+import {createDice} from './Components/SVGBank/SVGBank.js'
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <SubmitForm setRoute={setRoute} setUserName={setUserName}/> : ''}
       <Slider/>
       <GameBox/>
+      {createDice({width: 100})}
     </div>
   );
 }
