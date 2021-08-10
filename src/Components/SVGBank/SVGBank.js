@@ -1,3 +1,6 @@
+const defaultShapeFill = 'black';
+const defaultDotFill = 'white';
+
 export const createLessThan = (svgWidth, svgStrokeColor, svgFillColor) => {
     const svgHeight = svgWidth;
     const centerX = svgWidth/2;
@@ -31,15 +34,18 @@ export const createGreaterThan = (svgWidth, svgStrokeColor, svgFillColor) => {
 export const createDice = (propertyObject) => {
     const width = propertyObject.width? propertyObject.width : 100;
     const height = propertyObject.height? propertyObject.height : width;
-    const diceFill = propertyObject.diceFill? propertyObject.diceFill : 'black';
-    const dotFill = propertyObject.dotFill? propertyObject.dotFill : 'white';
+    const diceFill = propertyObject.diceFill? propertyObject.diceFill : defaultShapeFill;
+    const dotFill = propertyObject.dotFill? propertyObject.dotFill : defaultDotFill;
     const diceMaxNumber = 6;
-    const diceNumber = (propertyObject.diceNumber<=diceMaxNumber)? propertyObject.diceNumber : Math.floor(Math.random()*(diceMaxNumber+1));
+    const diceNumber = 
+                        (propertyObject.diceNumber<=diceMaxNumber && propertyObject.diceNumber>0)? 
+                        propertyObject.diceNumber : 
+                        Math.floor(Math.random()*(diceMaxNumber+1));
     const centerX = width/2;
     const centerY = height/2;
     const diceSpacingX = width/4;
     const diceSpacingY = height/4;
-    const circleRatio = 0.125;
+    const circleRatio = 0.1875;
     const circleDiameter = circleRatio*width;
 
     const dotLocations = [
@@ -58,11 +64,14 @@ export const createDice = (propertyObject) => {
     };
 
     const renderedDots = dotNumberLocator[diceNumber].map((coordinates, i) => {
-        console.log('dice Number: ', diceNumber);
-        let coord = dotLocations[coordinates];
-        console.log('coord: ', coord);
-        console.log('coordinates: ', coordinates);
-        return <circle key={'dice'+i} cx={dotLocations[coordinates][0]} cy={dotLocations[coordinates][1]} r={circleDiameter} fill={dotFill}/>;
+        console.log(diceNumber);
+        console.log(coordinates);
+        return <circle key={'dice'+i} 
+                cx={dotLocations[coordinates][0]} 
+                cy={dotLocations[coordinates][1]} 
+                r={circleDiameter/2} 
+                fill={dotFill}
+                />;
     })
 
     return (
