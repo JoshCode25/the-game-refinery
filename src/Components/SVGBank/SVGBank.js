@@ -37,16 +37,18 @@ export const createDice = (propertyObject) => {
     const diceFill = propertyObject.diceFill? propertyObject.diceFill : defaultShapeFill;
     const dotFill = propertyObject.dotFill? propertyObject.dotFill : defaultDotFill;
     const diceMaxNumber = 6;
+    const diceCornerRadius = propertyObject.diceCornerRadius? propertyObject.diceCornerRadius : 0;
     const diceNumber = 
-                        (propertyObject.diceNumber<=diceMaxNumber && propertyObject.diceNumber>0)? 
+                        (propertyObject.diceNumber<=diceMaxNumber && propertyObject.diceNumber>=1)? 
                         propertyObject.diceNumber : 
-                        Math.floor(Math.random()*(diceMaxNumber+1));
+                        randomIntFromInterval(1, diceMaxNumber);
     const centerX = width/2;
     const centerY = height/2;
     const diceSpacingX = width/4;
     const diceSpacingY = height/4;
     const circleRatio = 0.1875;
     const circleDiameter = circleRatio*width;
+    const circleRadius = circleDiameter/2;
 
     const dotLocations = [
         [diceSpacingX, diceSpacingY], [centerX, diceSpacingY], [width-diceSpacingX, diceSpacingY],
@@ -63,21 +65,32 @@ export const createDice = (propertyObject) => {
         6 : [0, 2, 3, 5, 6, 8]
     };
 
+    console.log('DiceNumberBefore: ', diceNumber);
+
     const renderedDots = dotNumberLocator[diceNumber].map((coordinates, i) => {
-        console.log(diceNumber);
-        console.log(coordinates);
+        console.log('diceNumber: ', diceNumber);
+        console.log('coord: ', coordinates);
         return <circle key={'dice'+i} 
                 cx={dotLocations[coordinates][0]} 
                 cy={dotLocations[coordinates][1]} 
-                r={circleDiameter/2} 
+                r={circleRadius} 
                 fill={dotFill}
                 />;
     })
 
+    console.log('DiceNumberAfter: ', diceNumber);
+    console.log(renderedDots);
+
     return (
-        <svg style={{width: width, height: height}}>
-            <rect style={{width: width, height: height, fill: diceFill}}/>
+        <svg className={diceNumber} style={{width: width, height: height}}>
+            {console.log('numberWithin: ', diceNumber)}
+            <rect style={{width: width, height: height, fill: diceFill, rx: diceCornerRadius}}/>
             {renderedDots}
+            {console.log(renderedDots)}
         </svg>
     )
 }
+
+const randomIntFromInterval = (min, max) => { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
