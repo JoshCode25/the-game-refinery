@@ -3,12 +3,12 @@ import GameCard from '../GameCard/GameCard';
 import gameList from '../GameList/gameList.js'
 
 function GameBox() {
+    console.log(gameList);
 
     return (
         <div style={{position: 'relative'}}>
-            <p style={{backgroundColor: 'white'}} className='f2 flex justify-center '>Games</p>
-            <hr style={{height: '3px', width: '45%', left: 0, backgroundColor: '#5089C6', position: 'absolute', top: '23px'}}/>
-            <hr style={{height: '3px', width: '45%', right: 0, backgroundColor: '#5089C6', position: 'absolute', top: '23px'}}/>
+            <hr style={{height: '3px', width: '100%', left: 0, backgroundColor: '#5089C6', position: 'absolute', top: '23px', zIndex:'-1'}}/>
+            <p style={{backgroundColor: 'white', margin: '0 auto', width: '130px', textAlign: 'center'}} className='f2'>Games</p>
             <div className='flex flex-wrap'>
                 {
                     gameList.map((game, i) => {

@@ -6,12 +6,10 @@ function GameCard({game}) {
     const {name, rating, playerMin, playerMax, 
         lengthMin, lengthMax, mechanics, description, status, imageUrl} = game;
 
-    const ratingStatusDisplay = rating? (`${rating}/5`) : status;
-
     return (
         <div style={{width: cardWidth, height: cardWidth, position: 'relative'}} className='flex pointer ma3 ba shadowHover hoverReveal'>
             <div className='hoverInfoContainer'>
-                <p className='f4'>{ratingStatusDisplay}</p>
+                <p className='f4'>{`${rating}/5`}</p>
                 <p className='f3 pb1'>Players: {playerMin}{playerMin === playerMax? '': '-' + playerMax}</p>
                 <p className='f3 pb1'>Length: {lengthMin}-{lengthMax}min</p>
                 <p className='f3 pb2'>Status: {status}</p>

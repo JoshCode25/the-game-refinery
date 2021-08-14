@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
+import './SubmitForm.css';
 
 function SubmitForm({setRoute, setUserName}) {
     const [value, setValue] = useState('');
@@ -27,7 +28,7 @@ function SubmitForm({setRoute, setUserName}) {
             <p className='f3 pv2'>Please enter your Name:</p>
             <form onSubmit={handleSubmit} className='f5'>
                 <label>
-                    <input style={{borderRadius: '10px', height: '2rem', width: '200px'}} ref={inputRef} type="text" value={value} onChange={handleChange} />
+                    <input style={{borderRadius: '10px', height: '2rem', width: '200px'}} className='hideFocusOutline' ref={inputRef} type="text" value={value} onChange={handleChange} />
                 </label>
                 <input type="submit" value="Submit" className='f3 ph3 pv2 mb2 dib dim pointer' style={{border: 'none', backgroundColor: '#f3a712', fontFamily: 'Segoe UI'}}/>
             </form>
