@@ -38,6 +38,7 @@ function GameCard({game}) {
                     </div> 
                 ) : ''
             } */}
+            
         </div>
     )
 }
