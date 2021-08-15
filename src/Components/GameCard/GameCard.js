@@ -3,11 +3,12 @@ import './GameCard.css';
 
 function GameCard({game}) {
     const cardWidth = '210px';
+    const cardHeight = '260px';
     const {name, rating, playerMin, playerMax, 
         lengthMin, lengthMax, mechanics, description, status, imageUrl} = game;
 
     return (
-        <div style={{width: cardWidth, height: cardWidth, position: 'relative'}} className='flex pointer ma3 ba shadowHover hoverReveal'>
+        <div style={{width: cardWidth, height: cardHeight, position: 'relative'}} className='flex pointer ma3 ba shadowHover hoverReveal'>
             <div className='hoverInfoContainer'>
                 <p className='f4'>{`${rating}/5`}</p>
                 <p className='f3 pb1'>Players: {playerMin}{playerMin === playerMax? '': '-' + playerMax}</p>
@@ -16,7 +17,7 @@ function GameCard({game}) {
 
             </div>
             <div className='flex flex-column items-center' >
-                <img src={imageUrl} alt='Game Icon' style={{width: '100%', height: 'auto', overflow: 'hidden'}} />
+                <img src={imageUrl} alt='Game Icon' style={{width: cardWidth, height: cardWidth, overflow: 'hidden'}} />
                 <h2 style={{position: 'absolute', bottom: '10px', backgroundColor: 'white'}} 
                     className='f4 pb1 tc mh2'
                     >

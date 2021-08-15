@@ -103,7 +103,7 @@ const theDiceGame = {
     playerMin: 2, 
     playerMax: 4, 
     lengthMin: 15, 
-    LengthMax: 30,
+    lengthMax: 30,
     mechanics: ['Dice', 'Cooperative'], 
     description: 'Build your local town and work with those around you to overthrow the Tyrant', 
     status: 'Proto V1.0'
