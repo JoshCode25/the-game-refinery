@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import GameCard from '../GameCard/GameCard';
 import gameList from '../GameList/gameList.js'
+import GamePage from '../GamePage/GamePage';
 
 function GameBox() {
-    console.log(gameList);
+    const [gameIndex, setGameIndex] = useState(0);
+    const [currentGame, setCurrentGame] = useState({});
+   
+    useEffect(() => {
+        setCurrentGame(gameList[gameIndex]);
+    }, [gameIndex]);
 
     return (
         <div style={{position: 'relative'}}>
@@ -21,6 +27,7 @@ function GameBox() {
                     })
                 }
             </div>
+            <GamePage game={currentGame}/>
         </div>
     )
 }

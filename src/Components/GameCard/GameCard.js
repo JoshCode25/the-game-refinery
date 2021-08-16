@@ -5,7 +5,7 @@ function GameCard({game}) {
     const cardWidth = '210px';
     const cardHeight = '260px';
     const {name, rating, playerMin, playerMax, 
-        lengthMin, lengthMax, mechanics, description, status, imageUrl} = game;
+        lengthMin, lengthMax, status, imageUrl} = game;
 
     return (
         <div style={{width: cardWidth, height: cardHeight, position: 'relative'}} className='flex pointer ma3 ba shadowHover hoverReveal'>
@@ -23,22 +23,7 @@ function GameCard({game}) {
                     >
                         {name.toUpperCase()}
                 </h2>
-            </div>
-            {/* {isExpanded? 
-                (
-                    <div style={{position: 'relative', width: '300px'}} className='flex flex-column justify-around'>
-                        <p className='f3 pa2'>{description}</p>
-                        <div>
-                            <p>Mechanics:</p>
-                            <ul>
-                                {mechanics.map((mechanic, i) => <li key={mechanic.value + i}>{mechanic}</li>)}
-                            </ul>   
-                        </div>   
-                        <ExpandButton isExpanded={isExpanded} toggleExpanded={toggleExpandCard}/>
-                    </div> 
-                ) : ''
-            } */}
-            
+            </div>            
         </div>
     )
 }
