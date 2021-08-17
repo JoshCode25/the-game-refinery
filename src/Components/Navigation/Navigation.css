@@ -1,0 +1,25 @@
+li {
+    list-style-type: none;
+    padding: 0 0.5rem;
+    font-size: 2rem;
+    /* background-color: aliceblue;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: .5rem; */
+    padding: 0.5rem;
+}
+
+li:hover, a:hover {
+    color: #f3a712;
+    /* opacity: .5;
+    transition: opacity .15s ease-in */
+}
+
+a {
+    text-decoration: none;
+    color: black
+}
+
+p {
+    font-size: 2rem;
+}
