@@ -4,10 +4,14 @@ function GamePage({game}) {
     const [isGameLoaded, setIsGameLoaded] = useState(false);
     const {name, rating, playerMin, playerMax, lengthMin, lengthMax, 
         description, mechanics, status, imageUrl} = game;
-    const mechanicsDisplay = [];
+    let mechanicsList;
     useEffect(() => {
-        setIsGameLoaded(true);
-    }, [])
+       if(mechanics) {
+        mechanicsList = mechanics.map((mechanic, i) => {
+            return <p key={i}>{mechanic}</p>
+        })
+       };
+    }, [mechanics])
 
     console.log({game});
     console.log(mechanics);
@@ -23,12 +27,9 @@ function GamePage({game}) {
                 <div>{`Status: ${status}. Rating: ${rating}/5`}</div>
                 <div>{description}</div>
             </div>
-            {/* <div>
-                {mechanics.map((mechanic, i) => {
-                    return <p key={i}>{mechanic}</p>
-
-                })}
-            </div> */}
+            <div>
+                {mechanicsList}
+            </div>
 
         </div>
     )
