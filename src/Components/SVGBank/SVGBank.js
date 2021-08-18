@@ -1,5 +1,7 @@
 const defaultShapeFill = 'black';
 const defaultDotFill = 'white';
+const defaultWidth = 50;
+const defaultHeight = 50;
 
 export const createLessThan = (svgWidth, svgStrokeColor, svgFillColor) => {
     const svgHeight = svgWidth;
@@ -82,15 +84,39 @@ export const createDice = (propertyObject) => {
     console.log(renderedDots);
 
     return (
-        <svg className={diceNumber} style={{width: width, height: height}}>
-            {console.log('numberWithin: ', diceNumber)}
+        <svg style={{width: width, height: height}}>
             <rect style={{width: width, height: height, fill: diceFill, rx: diceCornerRadius}}/>
             {renderedDots}
-            {console.log(renderedDots)}
         </svg>
     )
 }
 
+export const createPlayerNumberIcon = (propertyObject) => {
+    const playerFill = propertyObject.playerFill? propertyObject.playerFill : defaultShapeFill;
+    const width = propertyObject.width? propertyObject.width : defaultWidth;
+    const height = propertyObject.height? propertyObject.height : defaultHeight;
+
+    const centerX = width/2;
+    const centerY = height/2;
+
+    const headradius = 0.65*width/2;
+
+    const head = <circle cx={centerX} cy={headradius} r={headradius} fill={playerFill}/>
+    const shoulder = <ellipse cx={centerX} cy={height*1.3} rx={width*1.25} ry={height*0.75} fill={playerFill}/>
+
+    return (
+        <g style={{width: width}}>
+            <svg style={{width: width, height: height, x: centerX, color: 'gray'}}>
+                {head}
+                {shoulder}
+            </svg>
+            <svg style={{width: width, height: height}}>
+                {head}
+                {shoulder}
+            </svg>
+        </g>
+    )
+}
 const randomIntFromInterval = (min, max) => { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
