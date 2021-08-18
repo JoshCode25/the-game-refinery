@@ -23,7 +23,7 @@ function GamePage({game}) {
                 <h2>Mechanics</h2>
                 {mechanics? mechanics.map((mechanic, i) => <p key={`mechanic${i}`}>{mechanic}</p>):''}
             </div>
-            {createPlayerNumberIcon({width: 30, height: 40, fill: 'black'})}
+            {createPlayerNumberIcon({width: 40, fill: 'black'})}
         </div>
     )
 

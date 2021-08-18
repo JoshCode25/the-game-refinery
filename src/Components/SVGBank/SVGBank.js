@@ -94,26 +94,31 @@ export const createDice = (propertyObject) => {
 export const createPlayerNumberIcon = (propertyObject) => {
     const playerFill = propertyObject.playerFill? propertyObject.playerFill : defaultShapeFill;
     const width = propertyObject.width? propertyObject.width : defaultWidth;
-    const height = propertyObject.height? propertyObject.height : defaultHeight;
+    const height = width; //must be a square
+    const playerWidth = 5/8*width;
 
     const centerX = width/2;
-    const centerY = height/2;
+    const headradius = 0.75*playerWidth/2;
+    const shoulderHeight = 0.25*height;
 
-    const headradius = 0.65*width/2;
-
-    const head = <circle cx={centerX} cy={headradius} r={headradius} fill={playerFill}/>
-    const shoulder = <ellipse cx={centerX} cy={height*1.3} rx={width*1.25} ry={height*0.75} fill={playerFill}/>
+    const headFront = <circle cx={playerWidth/2} cy={playerWidth/2} r={headradius} fill={playerFill}/>;
+    const shoulderPath = <path d={`M 0 ${height} l ${playerWidth} 0 l 0 -${shoulderHeight} 
+                                q -${playerWidth/2} -${shoulderHeight*0.5} -${playerWidth} 0 z`} 
+                                fill={playerFill} stroke={playerFill}/>;
+    const shoulderFront = <ellipse cx={playerWidth/2} cy={height*1.3} rx={width*1.25} ry={height*0.75} fill={playerFill}/>;
+    const headBack = <circle cx={width - playerWidth/2} cy={headradius} r={headradius} fill={playerFill}/>;
+    const shoulderBack = <ellipse cx={width - playerWidth/2} cy={height*1.3} rx={width*1.25} ry={height*0.75} fill={playerFill}/>;
 
     return (
-        <g style={{width: width}}>
-            <svg style={{width: width, height: height, x: centerX, color: 'gray'}}>
-                {head}
-                {shoulder}
+        <g style={{width: width, height: height}} className='ba'>
+            <svg style={{width: playerWidth, height: height, x: centerX, color: 'gray'}}>
+                {headFront}
+                {shoulderPath}
             </svg>
-            <svg style={{width: width, height: height}}>
-                {head}
-                {shoulder}
-            </svg>
+            {/* <svg style={{width: playerWidth, height: height}}>
+                {headBack}
+                {shoulderBack}
+            </svg> */}
         </g>
     )
 }
