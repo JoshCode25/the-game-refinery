@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './GamePage.css';
-import {createPlayerNumberIcon} from '../SVGBank/SVGBank.js';
+import {createClockIcon, createPlayerNumberIcon} from '../SVGBank/SVGBank.js';
 
 function GamePage({game}) {
     const [isGameLoaded, setIsGameLoaded] = useState(false);
@@ -12,7 +12,7 @@ function GamePage({game}) {
             <div className='flex flex-column'>
                 <p>{name}</p>
                 <img style={{width: '200px', height: '250px'}} alt='game icon' src={imageUrl}/>
-                <p>{`Players: ${playerMin}-${playerMax}`}</p>
+                <p>{createPlayerNumberIcon({width: 25, playerFill: '#232c33'})} {`${playerMin}-${playerMax}`}</p>
                 <p>{`Length: ${lengthMin}-${lengthMax}min`}</p>
             </div>
             <div>
@@ -22,8 +22,8 @@ function GamePage({game}) {
             <div>
                 <h2>Mechanics</h2>
                 {mechanics? mechanics.map((mechanic, i) => <p key={`mechanic${i}`}>{mechanic}</p>):''}
+                {createClockIcon({})}
             </div>
-            {createPlayerNumberIcon({width: 40, fill: 'black'})}
         </div>
     )
 

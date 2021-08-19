@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './GameCard.css';
+import {createPlayerNumberIcon} from '../SVGBank/SVGBank.js';
 
 function GameCard({game}) {
     const cardWidth = '210px';
@@ -11,7 +12,7 @@ function GameCard({game}) {
         <div style={{width: cardWidth, height: cardHeight, position: 'relative'}} className='flex pointer ma3 ba shadowHover hoverReveal'>
             <div className='hoverInfoContainer'>
                 <p className='f4'>{`${rating}/5`}</p>
-                <p className='f3 pb1'>Players: {playerMin}{playerMin === playerMax? '': '-' + playerMax}</p>
+                <p className='f3 pb1'>{createPlayerNumberIcon({width: 25, playerFill: '#f3a712'})} {playerMin}{playerMin === playerMax? '': '-' + playerMax}</p>
                 <p className='f3 pb1'>Length: {lengthMin}-{lengthMax}min</p>
                 <p className='f3 pb2'>Status: {status}</p>
 

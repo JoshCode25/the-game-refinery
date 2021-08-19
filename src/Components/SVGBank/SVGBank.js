@@ -95,32 +95,74 @@ export const createPlayerNumberIcon = (propertyObject) => {
     const playerFill = propertyObject.playerFill? propertyObject.playerFill : defaultShapeFill;
     const width = propertyObject.width? propertyObject.width : defaultWidth;
     const height = width; //must be a square
-    const playerWidth = 5/8*width;
+    const playerWidth = .7*width;
 
     const centerX = width/2;
-    const headradius = 0.75*playerWidth/2;
+    const headradius = 0.65*playerWidth/2;
     const shoulderHeight = 0.25*height;
+    const shoulderPeakRatio = 0.8;
+    const backOpacity = 0.6;
+    const maskStrokeWidthReduction = 1/30;
 
-    const headFront = <circle cx={playerWidth/2} cy={playerWidth/2} r={headradius} fill={playerFill}/>;
-    const shoulderPath = <path d={`M 0 ${height} l ${playerWidth} 0 l 0 -${shoulderHeight} 
-                                q -${playerWidth/2} -${shoulderHeight*0.5} -${playerWidth} 0 z`} 
-                                fill={playerFill} stroke={playerFill}/>;
-    const shoulderFront = <ellipse cx={playerWidth/2} cy={height*1.3} rx={width*1.25} ry={height*0.75} fill={playerFill}/>;
-    const headBack = <circle cx={width - playerWidth/2} cy={headradius} r={headradius} fill={playerFill}/>;
-    const shoulderBack = <ellipse cx={width - playerWidth/2} cy={height*1.3} rx={width*1.25} ry={height*0.75} fill={playerFill}/>;
+    const headFront = <circle cx={playerWidth/2} cy={playerWidth/2} r={headradius} 
+                            fill={playerFill} stroke='white' strokeWidth={width*maskStrokeWidthReduction}/>;
+    const shoulderFront = <path d={`M 0 ${height} l ${playerWidth} 0 l 0 -${shoulderHeight} 
+                                q -${playerWidth/2} -${shoulderHeight*shoulderPeakRatio} -${playerWidth} 0 z`} 
+                                fill={playerFill} stroke='white' strokeWidth={width*maskStrokeWidthReduction}/>;
 
+    //change back color by reducing opacity, shift back to right
+    const headBack = <circle cx={width - playerWidth/2} cy={playerWidth/2} r={headradius} 
+                            fill={playerFill} fillOpacity={backOpacity} stroke='white' strokeWidth={width*maskStrokeWidthReduction}/>;
+    const shoulderBack = <path d={`M ${width - playerWidth} ${height} l ${playerWidth} 0 l 0 -${shoulderHeight} 
+                                q -${playerWidth/2} -${shoulderHeight*shoulderPeakRatio} -${playerWidth} 0 z`} 
+                                fill={playerFill} fillOpacity={backOpacity} stroke='white' strokeWidth={width*maskStrokeWidthReduction}/>;
     return (
-        <g style={{width: width, height: height}} className='ba'>
-            <svg style={{width: playerWidth, height: height, x: centerX, color: 'gray'}}>
-                {headFront}
-                {shoulderPath}
-            </svg>
-            {/* <svg style={{width: playerWidth, height: height}}>
+            <svg style={{width: width, height: height}}>
                 {headBack}
                 {shoulderBack}
-            </svg> */}
-        </g>
+                {headFront}
+                {shoulderFront}
+            </svg>
     )
+}
+
+export const createClockIcon = (propertyObject) => {
+    const clockFill = propertyObject.clockFill? propertyObject.clockFill : defaultDotFill;
+    const clockStrokeColor = propertyObject.clockStroke? propertyObject.clockStroke : defaultShapeFill;
+    const clockRadius = propertyObject.clockRadius? propertyObject.clockRadius : defaultWidth;
+    const clockStrokeWidth = clockRadius/20;
+    const width = clockRadius*2;
+    const height = clockRadius*2;
+    const timeFill = propertyObject.timeFill? propertyObject.timeFill : defaultShapeFill;
+    const timeFillOpacity = 0.6;
+
+    const minLength = propertyObject.minLength? propertyObject.minLength : 15;
+    const maxLength = propertyObject.maxLength? propertyObject.maxLength : 60;
+    const lengthLimit = 120;
+    const minLengthDeg = minLength*360/lengthLimit;
+    const maxLengthDeg = maxLength*360/lengthLimit;
+    const timeStartCoord = calcClockCoord(clockRadius, minLengthDeg);
+    const timeEndCoord = calcClockCoord(clockRadius, maxLengthDeg);
+
+    const clock = <circle cx={clockRadius} cy={clockRadius} r={clockRadius}
+                        fill={clockFill} stroke={clockStrokeColor} strokeWidth={clockStrokeWidth}/>;
+    const clockTime = <path d={`M ${clockRadius} ${clockRadius} l ${timeStartCoord.x} ${timeStartCoord.y} 
+                        l ${timeEndCoord.x} ${timeEndCoord.y} z`} fill={timeFill} fillOpacity={timeFillOpacity}/>
+
+    return (
+        <svg style={{width: width, height: height}}>
+            {clock}
+            {clockTime}
+        </svg>
+    )
+}
+
+const calcClockCoord = (radius, degree) => {
+    let radian = degree*Math.PI/180;
+    let x = radius*Math.cos(radian);
+    let y = radius*Math.sin(radian);
+    let coord = {x: x, y: y};
+    return coord;
 }
 const randomIntFromInterval = (min, max) => { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
