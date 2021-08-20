@@ -12,7 +12,7 @@ function GamePage({game}) {
             <div className='flex flex-column'>
                 <p>{name}</p>
                 <img style={{width: '200px', height: '250px'}} alt='game icon' src={imageUrl}/>
-                <p>{createPlayerNumberIcon({width: 25, playerFill: '#232c33'})} {`${playerMin}-${playerMax}`}</p>
+                <p>{createPlayerNumberIcon({width: 25, playerFill: '#232c33', maskStrokeColor: '#232c33'})} {`${playerMin}-${playerMax}`}</p>
                 <p>{`Length: ${lengthMin}-${lengthMax}min`}</p>
             </div>
             <div>

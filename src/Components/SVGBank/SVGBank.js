@@ -102,20 +102,21 @@ export const createPlayerNumberIcon = (propertyObject) => {
     const shoulderHeight = 0.25*height;
     const shoulderPeakRatio = 0.8;
     const backOpacity = 0.6;
+    const maskStrokeColor = propertyObject.maskStrokeColor? propertyObject.maskStrokeColor : 'white';
     const maskStrokeWidthReduction = 1/30;
 
     const headFront = <circle cx={playerWidth/2} cy={playerWidth/2} r={headradius} 
-                            fill={playerFill} stroke='white' strokeWidth={width*maskStrokeWidthReduction}/>;
+                            fill={playerFill} stroke={maskStrokeColor} strokeWidth={width*maskStrokeWidthReduction}/>;
     const shoulderFront = <path d={`M 0 ${height} l ${playerWidth} 0 l 0 -${shoulderHeight} 
                                 q -${playerWidth/2} -${shoulderHeight*shoulderPeakRatio} -${playerWidth} 0 z`} 
-                                fill={playerFill} stroke='white' strokeWidth={width*maskStrokeWidthReduction}/>;
+                                fill={playerFill} stroke={maskStrokeColor} strokeWidth={width*maskStrokeWidthReduction}/>;
 
     //change back color by reducing opacity, shift back to right
     const headBack = <circle cx={width - playerWidth/2} cy={playerWidth/2} r={headradius} 
-                            fill={playerFill} fillOpacity={backOpacity} stroke='white' strokeWidth={width*maskStrokeWidthReduction}/>;
+                            fill={playerFill} fillOpacity={backOpacity} stroke={maskStrokeColor} strokeWidth={width*maskStrokeWidthReduction}/>;
     const shoulderBack = <path d={`M ${width - playerWidth} ${height} l ${playerWidth} 0 l 0 -${shoulderHeight} 
                                 q -${playerWidth/2} -${shoulderHeight*shoulderPeakRatio} -${playerWidth} 0 z`} 
-                                fill={playerFill} fillOpacity={backOpacity} stroke='white' strokeWidth={width*maskStrokeWidthReduction}/>;
+                                fill={playerFill} fillOpacity={backOpacity} stroke={maskStrokeColor} strokeWidth={width*maskStrokeWidthReduction}/>;
     return (
             <svg style={{width: width, height: height}}>
                 {headBack}
