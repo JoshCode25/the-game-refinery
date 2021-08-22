@@ -91,7 +91,9 @@ export const createDice = (propertyObject) => {
     )
 }
 
-export const createPlayerNumberIcon = (propertyObject) => {
+export const createPlayerNumberIcon = (propertyInput) => {
+    const propertyObject = propertyInput? propertyInput : {};
+
     const playerFill = propertyObject.playerFill? propertyObject.playerFill : defaultShapeFill;
     const width = propertyObject.width? propertyObject.width : defaultWidth;
     const height = width; //must be a square
@@ -127,13 +129,17 @@ export const createPlayerNumberIcon = (propertyObject) => {
     )
 }
 
-export const createClockIcon = (propertyObject) => {
+export const createClockIcon = (propertyInput) => {
+    const propertyObject = propertyInput? propertyInput : {};
+
     const clockFill = propertyObject.clockFill? propertyObject.clockFill : defaultDotFill;
     const clockStrokeColor = propertyObject.clockStroke? propertyObject.clockStroke : defaultShapeFill;
     const clockRadius = propertyObject.clockRadius? propertyObject.clockRadius : defaultWidth;
     const clockStrokeWidth = clockRadius/20;
-    const width = clockRadius*2;
-    const height = clockRadius*2;
+    const width = clockRadius*2.1;
+    const height = clockRadius*2.1;
+    const centerX = width/2;
+    const centerY = width/2;
     const timeFill = propertyObject.timeFill? propertyObject.timeFill : defaultShapeFill;
     const timeFillOpacity = 0.6;
 
@@ -144,10 +150,13 @@ export const createClockIcon = (propertyObject) => {
     const maxLengthDeg = maxLength*360/lengthLimit;
     const timeStartCoord = calcClockCoord(clockRadius, minLengthDeg);
     const timeEndCoord = calcClockCoord(clockRadius, maxLengthDeg);
+    console.log(clockRadius);
+    console.log('start', timeStartCoord);
+    console.log('end', timeEndCoord);
 
-    const clock = <circle cx={clockRadius} cy={clockRadius} r={clockRadius}
+    const clock = <circle cx={centerX} cy={centerY} r={clockRadius}
                         fill={clockFill} stroke={clockStrokeColor} strokeWidth={clockStrokeWidth}/>;
-    const clockTime = <path d={`M ${clockRadius} ${clockRadius} l ${timeStartCoord.x} ${timeStartCoord.y} 
+    const clockTime = <path d={`M ${centerX} ${centerY} l ${timeStartCoord.x} ${timeStartCoord.y} 
                         l ${timeEndCoord.x} ${timeEndCoord.y} z`} fill={timeFill} fillOpacity={timeFillOpacity}/>
 
     return (
@@ -159,12 +168,18 @@ export const createClockIcon = (propertyObject) => {
 }
 
 const calcClockCoord = (radius, degree) => {
+    let xSign = degree < 180? 1: -1;
+    let ySign = degree < 90 || degree > 270? 1: -1;
+    
     let radian = degree*Math.PI/180;
-    let x = radius*Math.cos(radian);
-    let y = radius*Math.sin(radian);
+    let x = radius*Math.sin(radian)*xSign;
+    let y = radius*Math.cos(radian)*ySign;
     let coord = {x: x, y: y};
+    console.log(xSign, ySign);
+    console.log(coord, degree);
     return coord;
 }
+
 const randomIntFromInterval = (min, max) => { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
-  }
+}

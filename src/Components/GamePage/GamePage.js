@@ -22,7 +22,7 @@ function GamePage({game}) {
             <div>
                 <h2>Mechanics</h2>
                 {mechanics? mechanics.map((mechanic, i) => <p key={`mechanic${i}`}>{mechanic}</p>):''}
-                {createClockIcon({})}
+                {createClockIcon()}
             </div>
         </div>
     )
