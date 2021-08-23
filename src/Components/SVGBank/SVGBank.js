@@ -168,14 +168,12 @@ export const createClockIcon = (propertyInput) => {
 }
 
 const calcClockCoord = (radius, degree) => {
-    let xSign = degree < 180? 1: -1;
-    let ySign = degree < 90 || degree > 270? 1: -1;
     
-    let radian = degree*Math.PI/180;
-    let x = radius*Math.sin(radian)*xSign;
-    let y = radius*Math.cos(radian)*ySign;
+    let radianX = degree*Math.PI/180;
+    let radianY = (degree-90)*Math.PI/180
+    let x = radius*Math.sin(radianX);
+    let y = radius*Math.cos(radianY);
     let coord = {x: x, y: y};
-    console.log(xSign, ySign);
     console.log(coord, degree);
     return coord;
 }
