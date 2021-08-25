@@ -133,31 +133,26 @@ export const createClockIcon = (propertyInput) => {
     const propertyObject = propertyInput? propertyInput : {};
 
     const clockFill = propertyObject.clockFill? propertyObject.clockFill : defaultDotFill;
-    const clockStrokeColor = propertyObject.clockStroke? propertyObject.clockStroke : defaultShapeFill;
+    const clockStrokeColor = propertyObject.clockStrokeColor? propertyObject.clockStrokeColor : defaultShapeFill;
     const clockRadius = propertyObject.clockRadius? propertyObject.clockRadius : defaultWidth;
-    const clockStrokeWidth = clockRadius/20;
+    const clockStrokeWidth = clockRadius/6;
     const width = clockRadius*2.1;
     const height = clockRadius*2.1;
     const centerX = width/2;
     const centerY = width/2;
     const timeFill = propertyObject.timeFill? propertyObject.timeFill : defaultShapeFill;
-    const timeFillOpacity = 0.6;
+    const timeFillOpacity = 0.5;
 
     const minLength = propertyObject.minLength? propertyObject.minLength : 15;
     const maxLength = propertyObject.maxLength? propertyObject.maxLength : 60;
-    const lengthLimit = 120;
+    const lengthLimit = 150;
     const minLengthDeg = minLength*360/lengthLimit;
     const maxLengthDeg = maxLength*360/lengthLimit;
-    const timeStartCoord = calcClockCoord(clockRadius, minLengthDeg);
-    const timeEndCoord = calcClockCoord(clockRadius, maxLengthDeg);
-    console.log(clockRadius);
-    console.log('start', timeStartCoord);
-    console.log('end', timeEndCoord);
+    const clockTimeArc = describeArc(centerX, centerY, clockRadius, minLengthDeg, maxLengthDeg);
 
     const clock = <circle cx={centerX} cy={centerY} r={clockRadius}
                         fill={clockFill} stroke={clockStrokeColor} strokeWidth={clockStrokeWidth}/>;
-    const clockTime = <path d={`M ${centerX} ${centerY} l ${timeStartCoord.x} ${timeStartCoord.y} 
-                        l ${timeEndCoord.x} ${timeEndCoord.y} z`} fill={timeFill} fillOpacity={timeFillOpacity}/>
+    const clockTime = <path d={`M ${centerX} ${centerY} ${clockTimeArc} z`} fill={timeFill} fillOpacity={timeFillOpacity}/>
 
     return (
         <svg style={{width: width, height: height}}>
@@ -167,7 +162,7 @@ export const createClockIcon = (propertyInput) => {
     )
 }
 
-/*
+
 function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
   var angleInRadians = (angleInDegrees-90) * Math.PI / 180.0;
 
@@ -185,23 +180,11 @@ function describeArc(x, y, radius, startAngle, endAngle){
     var largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
 
     var d = [
-        "M", start.x, start.y, 
+        "L", start.x, start.y, 
         "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y
     ].join(" ");
 
     return d;       
-}
-*/
-
-const calcClockCoord = (radius, degree) => {
-    
-    let radianX = (degree-90)*Math.PI/180;
-    let radianY = (degree-90)*Math.PI/180
-    let x = radius*Math.sin(radianX);
-    let y = radius*Math.cos(radianY);
-    let coord = {x: x, y: y};
-    console.log(coord, degree);
-    return coord;
 }
 
 const randomIntFromInterval = (min, max) => { // min and max included 

@@ -65,7 +65,7 @@ const mythicCircus = {
     lengthMax:90, 
     mechanics:['Deckbuilding'], 
     description:'Build your team to become the greatest Ringleader', 
-    status: 'Proto V2.0',
+    status: 'Digital Development',
     imageUrl:mythicIcon
 } 
 creatNewGame(mythicCircus);
@@ -79,7 +79,7 @@ const theFarmGame = {
     lengthMax: 90, 
     mechanics: ['Resource Management', 'Set Collection', 'Dice'], 
     description: 'Plant, Water, Harvest, and Sell your produce to become the most renowned farm', 
-    status: 'Rework - Balancing',
+    status: 'Prototype Development',
     imageUrl: farmIcon
 } 
 creatNewGame(theFarmGame);
@@ -106,7 +106,7 @@ const theDiceGame = {
     lengthMax: 30,
     mechanics: ['Dice', 'Cooperative'], 
     description: 'Build your local town and work with those around you to overthrow the Tyrant', 
-    status: 'Proto V1.0'
+    status: 'Concept Development'
 }
 creatNewGame(theDiceGame);
 
