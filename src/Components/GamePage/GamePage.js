@@ -9,19 +9,19 @@ function GamePage({game}) {
 
     return (
         <div className='flex'>
-            <div className='flex flex-column'>
+            <div className='flex flex-column child-p-font125rem'>
                 <p>{name}</p>
                 <img style={{width: '200px', height: '250px'}} alt='game icon' src={imageUrl}/>
-                <p>{createPlayerNumberIcon({width: 25, playerFill: '#232c33', maskStrokeColor: '#232c33'})} 
+                <p>{createPlayerNumberIcon({width: 25, playerFill: '#232c33'})} 
                     {` ${playerMin}-${playerMax}`}</p>
-                <p>{createClockIcon({clockRadius: 12, minLength: lengthMin, maxLength: lengthMax})}
+                <p>{createClockIcon({width: 25, minLength: lengthMin, maxLength: lengthMax})}
                     {` ${lengthMin}-${lengthMax}min`}</p>
             </div>
-            <div>
+            <div className='child-p-font125rem'>
                 <p>{`Status: ${status}. Rating: ${rating}/5`}</p>
                 <p>{description}</p>
             </div>
-            <div>
+            <div className='child-p-font125rem'>
                 <h2>Mechanics</h2>
                 {mechanics? mechanics.map((mechanic, i) => <p key={`mechanic${i}`}>{mechanic}</p>):''}
             </div>

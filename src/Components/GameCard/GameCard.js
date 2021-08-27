@@ -31,15 +31,15 @@ function GameCard({game}) {
         <div style={{width: cardWidth, height: cardHeight, position: 'relative'}} className='flex pointer ma3 ba shadowHover hoverReveal'>
             <div style={{borderColor: hoverHighlightColor}} className='hoverInfoContainer'>
                 <p style={{color: hoverHighlightColor}} className='f4'>{`${rating}/5`}</p>
-                <p style={{color: hoverHighlightColor}} className='f3 pb1'>
-                    {createPlayerNumberIcon({width: 25, playerFill: hoverHighlightColor})} 
-                    {playerMin}{playerMin === playerMax? '': '-' + playerMax}
+                <p style={{color: hoverHighlightColor}} className='f4 pb1'>
+                    {createPlayerNumberIcon({width: 25, playerFill: hoverHighlightColor, maskStrokeColor: '#232c33'})} 
+                    {' ' + playerMin}{playerMin === playerMax? '': '-' + playerMax}
                 </p>
-                <p style={{color: hoverHighlightColor}} className='f3 pb1'>
-                    {createClockIcon({clockRadius: 12.5, clockStrokeColor: hoverHighlightColor, timeFill: hoverHighlightColor, 
+                <p style={{color: hoverHighlightColor}} className='f4 pb1'>
+                    {createClockIcon({width: 25, clockStrokeColor: hoverHighlightColor, timeFill: hoverHighlightColor, 
                         minLength: lengthMin, maxLength: lengthMax})} 
-                    {lengthMin}-{lengthMax}min</p>
-                <p style={{color: hoverHighlightColor}} className='f3 pb2'>Status: {status}</p>
+                    {' ' + lengthMin}-{lengthMax}min</p>
+                <p style={{color: hoverHighlightColor}} className='f4 pb2'>Status: {status}</p>
 
             </div>
             <div className='flex flex-column items-center' >

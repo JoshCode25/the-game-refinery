@@ -132,12 +132,12 @@ export const createPlayerNumberIcon = (propertyInput) => {
 export const createClockIcon = (propertyInput) => {
     const propertyObject = propertyInput? propertyInput : {};
 
+    const width = propertyObject.width? propertyObject.width : defaultWidth;
+    const height = width;
     const clockFill = propertyObject.clockFill? propertyObject.clockFill : defaultDotFill;
     const clockStrokeColor = propertyObject.clockStrokeColor? propertyObject.clockStrokeColor : defaultShapeFill;
-    const clockRadius = propertyObject.clockRadius? propertyObject.clockRadius : defaultWidth;
+    const clockRadius = 0.9*width/2;
     const clockStrokeWidth = clockRadius/6;
-    const width = clockRadius*2.1;
-    const height = clockRadius*2.1;
     const centerX = width/2;
     const centerY = width/2;
     const timeFill = propertyObject.timeFill? propertyObject.timeFill : defaultShapeFill;

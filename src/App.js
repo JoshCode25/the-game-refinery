@@ -33,8 +33,8 @@ function App() {
   return (
     <div style={{maxWidth: '1250px', marginLeft: 'auto', marginRight: 'auto'}}>
       <Navigation userName={userName} userGold={userGold} setUserGold={setUserGold}>
-        {isSignedIn && <p className='pointer' onClick={signOut}>Sign Out</p>}
-        {!isSignedIn && <p className='pointer' onClick={signIn}>Set Name</p>}
+        {isSignedIn && <a className='pointer' href='' onClick={signOut}>Sign Out</a>}
+        {!isSignedIn && <a className='pointer' href='' onClick={signIn}>Set Name</a>}
       </Navigation>
       { route === 'signIn' ?
         <SubmitForm setRoute={setRoute} setUserName={setUserName}/> : ''}

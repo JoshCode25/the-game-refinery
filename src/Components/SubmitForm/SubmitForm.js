@@ -5,6 +5,7 @@ function SubmitForm({setRoute, setUserName}) {
     const [value, setValue] = useState('');
     const inputRef = useRef(null);
   
+    //when it renders set focus to input
     useEffect(() => {
       inputRef.current.focus();
     }, []);
@@ -14,8 +15,8 @@ function SubmitForm({setRoute, setUserName}) {
     }
   
     const handleSubmit = (e) => {
-        setUserName(value);
         e.preventDefault();
+        setUserName(value);
         setValue('');
         setRoute('home');
     }
