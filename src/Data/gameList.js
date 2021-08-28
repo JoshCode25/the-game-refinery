@@ -1,7 +1,7 @@
-import logo from '../Logo/logo.svg';
-import mythicIcon from './icons/mythicCircusIcon.png';
-import farmIcon from './icons/farmGameIcon.png';
-import peasantIcon from './icons/peasantPrinceKingIcon.png';
+import logo from '../Components/Logo/Logo.js';
+import mythicIcon from '../Images/mythicCircusIcon.png';
+import farmIcon from '../Images/farmGameIcon.png';
+import peasantIcon from '../Images/peasantPrinceKingIcon.png';
 
 const gameList = [];
 

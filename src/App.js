@@ -1,45 +1,61 @@
-import Navigation from './Components/Navigation/Navigation.js';
-import React, {useState} from 'react';
+import Navigation from './Containers/Navigation/Navigation.js';
+import React, {useEffect, useState} from 'react';
 import './App.css';
-import Slider from './Components/Slider/Slider.js';
-import SubmitForm from './Components/SubmitForm/SubmitForm.js';
-import GameBox from './Components/GameBox/GameBox.js';
-import Footer from './Components/Footer/Footer.js';
+import HomePage from './Pages/HomePage.js';
+import Footer from './Containers/Footer/Footer.js';
+import GamePage from './Pages/GamePage/GamePage.js';
 
 function App() {
 
-  const [isSignedIn, setSignedIn] = useState(false);
-  const [route, setRoute] = useState('home');
+  const [userRoute, setUserRoute] = useState('signedOut');
+  const [pageRoute, setPageRoute] = useState('home');
+  const [currentGame, setCurrentGame] = useState('');
   const [userName, setUserName] = useState('');
   const [userGold, setUserGold] = useState(0);
 
   const signIn = () => {
-    if(route === 'home' && !isSignedIn){
-      setRoute('signIn');
-      setSignedIn(true);
+    if(userRoute !== 'signingIn' && userRoute !== 'signedIn'){
+      setUserRoute('signingIn');
       setUserGold(100);
     }
   }
 
   const signOut = () => {
-    if(isSignedIn) {
-      setSignedIn(false);
+    if(userRoute === 'signedIn') {
       setUserName('');
-      setRoute('home');
+      setUserRoute('signedOut')
       setUserGold(0);
     }
   }
 
+  let pageDisplay=<HomePage/>;
+
+  useEffect(() => {
+    switch(pageRoute) {
+      case 'home':
+        return pageDisplay=<HomePage/>;
+      case 'gamePage':
+        return pageDisplay=<GamePage currentGame={currentGame}/>;
+      default :
+        return pageDisplay=<HomePage/>;
+    }
+
+  }, [pageRoute])
+
+
   return (
-    <div style={{maxWidth: '1250px', marginLeft: 'auto', marginRight: 'auto'}}>
-      <Navigation userName={userName} userGold={userGold} setUserGold={setUserGold}>
-        {isSignedIn && <a className='pointer' href='' onClick={signOut}>Sign Out</a>}
-        {!isSignedIn && <a className='pointer' href='' onClick={signIn}>Set Name</a>}
+    <div style={{maxWidth: '1250px', margin: '0 auto'}}>
+      <Navigation 
+        userRoute={userRoute} 
+        setUserRoute={setUserRoute} 
+        signIn={signIn}
+        signOut={signOut}
+        userName={userName} 
+        setUserName={setUserName}
+        userGold={userGold} 
+        setUserGold={setUserGold}>
       </Navigation>
-      { route === 'signIn' ?
-        <SubmitForm setRoute={setRoute} setUserName={setUserName}/> : ''}
-      <Slider/>
-      <GameBox/>
+      {pageDisplay}
       <Footer/>
     </div>
   );

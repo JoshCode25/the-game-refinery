@@ -1,7 +1,6 @@
 const defaultShapeFill = 'black';
 const defaultDotFill = 'white';
 const defaultWidth = 50;
-const defaultHeight = 50;
 
 export const createLessThan = (svgWidth, svgStrokeColor, svgFillColor) => {
     const svgHeight = svgWidth;
@@ -67,11 +66,7 @@ export const createDice = (propertyObject) => {
         6 : [0, 2, 3, 5, 6, 8]
     };
 
-    console.log('DiceNumberBefore: ', diceNumber);
-
     const renderedDots = dotNumberLocator[diceNumber].map((coordinates, i) => {
-        console.log('diceNumber: ', diceNumber);
-        console.log('coord: ', coordinates);
         return <circle key={'dice'+i} 
                 cx={dotLocations[coordinates][0]} 
                 cy={dotLocations[coordinates][1]} 
@@ -79,9 +74,6 @@ export const createDice = (propertyObject) => {
                 fill={dotFill}
                 />;
     })
-
-    console.log('DiceNumberAfter: ', diceNumber);
-    console.log(renderedDots);
 
     return (
         <svg style={{width: width, height: height}}>
@@ -99,7 +91,6 @@ export const createPlayerNumberIcon = (propertyInput) => {
     const height = width; //must be a square
     const playerWidth = .7*width;
 
-    const centerX = width/2;
     const headradius = 0.65*playerWidth/2;
     const shoulderHeight = 0.25*height;
     const shoulderPeakRatio = 0.8;

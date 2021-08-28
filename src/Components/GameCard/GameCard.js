@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './GameCard.css';
-import {createPlayerNumberIcon, createClockIcon} from '../SVGBank/SVGBank.js';
+import {createPlayerNumberIcon, createClockIcon} from '../../Data/SVGBank.js';
 
 function GameCard({game}) {
     const cardWidth = '210px';

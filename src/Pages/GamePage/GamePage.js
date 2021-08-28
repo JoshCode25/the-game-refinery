@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './GamePage.css';
-import {createClockIcon, createPlayerNumberIcon} from '../SVGBank/SVGBank.js';
+import {createClockIcon, createPlayerNumberIcon} from '../../Data/SVGBank.js';
 
 function GamePage({game}) {
-    const [isGameLoaded, setIsGameLoaded] = useState(false);
     const {name, rating, playerMin, playerMax, lengthMin, lengthMax, 
         description, mechanics, status, imageUrl} = game;
 

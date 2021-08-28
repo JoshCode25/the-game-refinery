@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './SubmitForm.css';
 
-function SubmitForm({setRoute, setUserName}) {
+function SubmitForm({setUserRoute, setUserName}) {
     const [value, setValue] = useState('');
     const inputRef = useRef(null);
   
@@ -18,7 +18,7 @@ function SubmitForm({setRoute, setUserName}) {
         e.preventDefault();
         setUserName(value);
         setValue('');
-        setRoute('home');
+        setUserRoute('signedIn');
     }
   
       return (

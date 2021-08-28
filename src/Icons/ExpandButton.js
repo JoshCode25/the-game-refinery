@@ -1,5 +1,5 @@
 import React from 'react';
-import {createLessThan, createGreaterThan, createDice} from '../SVGBank/SVGBank.js'
+import {createLessThan, createGreaterThan} from '../Components/SVGBank/SVGBank.js'
 
 function ExpandButton({isExpanded, toggleExpanded}) {
 
@@ -9,7 +9,6 @@ function ExpandButton({isExpanded, toggleExpanded}) {
             onClick={toggleExpanded} 
             className='dim pointer'>
                 {isExpanded? createLessThan(30, '#000', 'gray') : createGreaterThan(30, '#000', 'gray') }
-            {/* {createDice(200, 200, 'black', 1)} */}
         </div>
     )
 }
