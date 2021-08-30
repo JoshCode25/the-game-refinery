@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GameCard from '../../Components/GameCard/GameCard.js';
 import gameList from '../../Data/gameList.js'
-import GamePage from '../../Components/GamePage/GamePage.js';
+import GamePage from '../../Pages/GamePage/GamePage.js';
 
 function GameBox() {
     const [gameIndex, setGameIndex] = useState(0);

@@ -1,4 +1,4 @@
-import logo from '../Components/Logo/Logo.js';
+import logo from '../Images/logo.svg';
 import mythicIcon from '../Images/mythicCircusIcon.png';
 import farmIcon from '../Images/farmGameIcon.png';
 import peasantIcon from '../Images/peasantPrinceKingIcon.png';
