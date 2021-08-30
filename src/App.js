@@ -28,19 +28,18 @@ function App() {
     }
   }
 
-  let pageDisplay=<HomePage/>;
-
-  useEffect(() => {
+const renderPageDisplay = (pageRoute) => {
     switch(pageRoute) {
       case 'home':
-        return pageDisplay=<HomePage/>;
+        return <HomePage setPageRoute={setPageRoute} setCurrentGame={setCurrentGame}/>;
       case 'gamePage':
-        return pageDisplay=<GamePage currentGame={currentGame}/>;
+        console.log('gamePage');
+        return <GamePage currentGame={currentGame}/>;
       default :
-        return pageDisplay=<HomePage/>;
+        console.log('default');
+        return <HomePage setPageRoute={setPageRoute} setCurrentGame={setCurrentGame}/>;
     }
-
-  }, [pageRoute])
+  };
 
 
   return (
@@ -55,7 +54,7 @@ function App() {
         userGold={userGold} 
         setUserGold={setUserGold}>
       </Navigation>
-      {pageDisplay}
+      {renderPageDisplay(pageRoute)}
       <Footer/>
     </div>
   );

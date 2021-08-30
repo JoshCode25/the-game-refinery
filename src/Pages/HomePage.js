@@ -1,13 +1,14 @@
 import React from 'react';
 import DisplayBox from '../Containers/DisplayBox/DisplayBox';
 import Slider from '../Components/Slider/Slider';
+import gameList from '../Data/gameList.js'
 
-const HomePage = () => {
+const HomePage = ({setCurrentGame, setPageRoute}) => {
 
     return (
         <div>
             <Slider/>
-            <DisplayBox/>
+            <DisplayBox setPageRoute={setPageRoute} setCurrentGame={setCurrentGame} gameList={gameList}/>
         </div>
     )
 

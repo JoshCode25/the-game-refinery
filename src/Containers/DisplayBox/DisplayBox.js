@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import GameCard from '../../Components/GameCard/GameCard.js';
-import gameList from '../../Data/gameList.js'
-import GamePage from '../../Pages/GamePage/GamePage.js';
 
-function GameBox() {
-    const [gameIndex, setGameIndex] = useState(0);
-    const [currentGame, setCurrentGame] = useState({});
-   
-    useEffect(() => {
-        setCurrentGame(gameList[gameIndex]);
-    }, [gameIndex]);
+function GameBox({gameList, setCurrentGame, setPageRoute}) {
+
+    const goToGamePage = (game) => {
+        console.log(game);
+        setCurrentGame(game);
+        setPageRoute('gamePage');
+    }
 
     return (
         <div style={{position: 'relative'}}>
@@ -22,12 +20,12 @@ function GameBox() {
                         <GameCard
                             key={game.name+i}
                             game={game}
+                            goToGamePage={goToGamePage}
                         />
                         );
                     })
                 }
             </div>
-            <GamePage game={currentGame}/>
         </div>
     )
 }

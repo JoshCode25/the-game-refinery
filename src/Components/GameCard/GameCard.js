@@ -2,7 +2,7 @@ import React from 'react';
 import './GameCard.css';
 import {createPlayerNumberIcon, createClockIcon} from '../../Data/SVGBank.js';
 
-function GameCard({game}) {
+function GameCard({game, goToGamePage}) {
     const cardWidth = '210px';
     const cardHeight = '260px';
     const {name, rating, playerMin, playerMax, 
@@ -28,7 +28,7 @@ function GameCard({game}) {
     hoverHighlightColor = setHighlightColor(status);
 
     return (
-        <div style={{width: cardWidth, height: cardHeight, position: 'relative'}} className='flex pointer ma3 ba shadowHover hoverReveal'>
+        <div onClick={() => goToGamePage(game)} style={{width: cardWidth, height: cardHeight, position: 'relative'}} className='flex pointer ma3 ba shadowHover hoverReveal'>
             <div style={{borderColor: hoverHighlightColor}} className='hoverInfoContainer'>
                 <p style={{color: hoverHighlightColor}} className='f4'>{`${rating}/5`}</p>
                 <p style={{color: hoverHighlightColor}} className='f4 pb1'>
