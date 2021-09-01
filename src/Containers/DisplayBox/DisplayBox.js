@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import GameCard from '../../Components/GameCard/GameCard.js';
 
 function GameBox({gameList, setCurrentGame, setPageRoute}) {
@@ -11,7 +11,7 @@ function GameBox({gameList, setCurrentGame, setPageRoute}) {
 
     return (
         <div style={{position: 'relative'}}>
-            <hr style={{height: '3px', width: '100%', left: 0, backgroundColor: '#5089C6', position: 'absolute', top: '23px', zIndex:'-1'}}/>
+            <hr style={{height: '3px', width: '100%', left: 0, backgroundColor: '#5089C6', position: 'absolute', top: '23px', zIndex:'-10'}}/>
             <p style={{backgroundColor: 'white', margin: '0 auto', width: '130px', textAlign: 'center'}} className='f2'>Games</p>
             <div className='flex flex-wrap'>
                 {

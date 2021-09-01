@@ -9,7 +9,7 @@ function App() {
 
   const [userRoute, setUserRoute] = useState('signedOut');
   const [pageRoute, setPageRoute] = useState('home');
-  const [currentGame, setCurrentGame] = useState('');
+  const [currentGame, setCurrentGame] = useState({});
   const [userName, setUserName] = useState('');
   const [userGold, setUserGold] = useState(0);
 
@@ -28,19 +28,10 @@ function App() {
     }
   }
 
-const renderPageDisplay = (pageRoute) => {
-    switch('pageRoute: ', pageRoute) {
-      case 'home':
-        return <HomePage setPageRoute={setPageRoute} setCurrentGame={setCurrentGame}/>;
-      case 'gamePage':
-        console.log('gamePage');
-        return <GamePage currentGame={currentGame}/>;
-      default :
-        console.log('default');
-        return <HomePage setPageRoute={setPageRoute} setCurrentGame={setCurrentGame}/>;
-    }
-  };
-
+  const goHomePage = () => {
+    setPageRoute('home');
+    setCurrentGame({});
+  }
 
   return (
     <div style={{maxWidth: '1250px', margin: '0 auto'}}>
@@ -49,12 +40,14 @@ const renderPageDisplay = (pageRoute) => {
         setUserRoute={setUserRoute} 
         signIn={signIn}
         signOut={signOut}
+        goHomePage={goHomePage}
         userName={userName} 
         setUserName={setUserName}
         userGold={userGold} 
         setUserGold={setUserGold}>
       </Navigation>
-      {renderPageDisplay(pageRoute)}
+      {pageRoute === 'home' && <HomePage setPageRoute={setPageRoute} setCurrentGame={setCurrentGame}/>}
+      {pageRoute === 'gamePage' && currentGame? <GamePage currentGame={currentGame}/> : '' }
       <Footer/>
     </div>
   );

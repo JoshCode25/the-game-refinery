@@ -1,6 +1,6 @@
 const defaultShapeFill = 'black';
 const defaultDotFill = 'white';
-const defaultWidth = 50;
+const defaultWidth = 25;
 
 export const createLessThan = (svgWidth, svgStrokeColor, svgFillColor) => {
     const svgHeight = svgWidth;

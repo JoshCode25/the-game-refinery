@@ -5,11 +5,11 @@ import 'tachyons';
 import UserInfo from '../../Components/UserInfo/UserInfo';
 import SubmitForm from '../../Components/SubmitForm/SubmitForm'
 
-const Navigation = ({userName, setUserName, userRoute, setUserRoute, userGold, setUserGold, signIn, signOut}) => {
+const Navigation = ({userName, setUserName, userRoute, setUserRoute, userGold, setUserGold, signIn, signOut, goHomePage}) => {
 
     return (
         <nav className='flex justify-between pa2 items-center'>
-            <Logo/>
+            <Logo goHomePage={goHomePage}/>
             <div className='flex flex-column'>
                 <ul className='flex items-center justify-end m0 p0'>
                     <li><p>Games</p></li>

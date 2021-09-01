@@ -1,3 +1,6 @@
 .child-p-font125rem > p {
     font-size: 1.25rem;
 }
+.child-font125rem > * {
+    font-size: 1.25rem;
+}
