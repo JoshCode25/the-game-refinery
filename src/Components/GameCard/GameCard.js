@@ -1,6 +1,7 @@
 import React from 'react';
 import './GameCard.css';
-import {createPlayerNumberIcon, createClockIcon} from '../../Data/SVGBank.js';
+import PlayerCountIcon from '../../Icons/PlayerCountIcon';
+import GameLengthIcon from '../../Icons/GameLengthIcon';
 
 function GameCard({game, goToGamePage}) {
     const cardWidth = '210px';
@@ -10,7 +11,7 @@ function GameCard({game, goToGamePage}) {
 
     let hoverHighlightColor; 
 
-    const setHighlightColor = (status) => {
+    const updateHighlightColor = (status) => {
         switch(status) {
             case "Digital Development" :
                 return hoverHighlightColor = '#f3a712';
@@ -25,20 +26,33 @@ function GameCard({game, goToGamePage}) {
         }
     }
 
-    hoverHighlightColor = setHighlightColor(status);
+    hoverHighlightColor = updateHighlightColor(status);
+
+    const playerIconObject = {
+        width: 25,
+        playerFill: hoverHighlightColor,
+        maskStrokeColor: "#232c33"
+    };
+    
+    const clockIconObject = {
+        width: 25, 
+        clockStrokeColor: hoverHighlightColor, 
+        timeFill: hoverHighlightColor, 
+        minLength: lengthMin, 
+        maxLength: lengthMax
+    }
+
 
     return (
         <div onClick={() => goToGamePage(game)} style={{width: cardWidth, height: cardHeight, position: 'relative'}} className='flex pointer ma3 ba shadowHover hoverReveal'>
             <div style={{borderColor: hoverHighlightColor}} className='hoverInfoContainer'>
                 <p style={{color: hoverHighlightColor}} className='f4'>{`${rating}/5`}</p>
                 <p style={{color: hoverHighlightColor}} className='f4 pb1'>
-                    {createPlayerNumberIcon({width: 25, playerFill: hoverHighlightColor, maskStrokeColor: '#232c33'})} 
-                    {' ' + playerMin}{playerMin === playerMax? '': '-' + playerMax}
+                    <PlayerCountIcon playerMin={playerMin} playerMax={playerMax} iconObject={playerIconObject}/>
                 </p>
                 <p style={{color: hoverHighlightColor}} className='f4 pb1'>
-                    {createClockIcon({width: 25, clockStrokeColor: hoverHighlightColor, timeFill: hoverHighlightColor, 
-                        minLength: lengthMin, maxLength: lengthMax})} 
-                    {' ' + lengthMin}-{lengthMax}min</p>
+                    <GameLengthIcon lengthMin={lengthMin} lengthMax={lengthMax} iconObject={clockIconObject}/>
+                </p>
                 <p style={{color: hoverHighlightColor}} className='f4 pb2'>Status: {status}</p>
 
             </div>

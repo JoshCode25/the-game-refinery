@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './GamePage.css';
 import {createClockIcon, createPlayerNumberIcon} from '../../Data/SVGBank.js';
 

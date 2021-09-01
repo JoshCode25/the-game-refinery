@@ -29,7 +29,7 @@ function App() {
   }
 
 const renderPageDisplay = (pageRoute) => {
-    switch(pageRoute) {
+    switch('pageRoute: ', pageRoute) {
       case 'home':
         return <HomePage setPageRoute={setPageRoute} setCurrentGame={setCurrentGame}/>;
       case 'gamePage':
