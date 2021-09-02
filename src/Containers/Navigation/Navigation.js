@@ -22,7 +22,7 @@ const Navigation = ({userName, setUserName, userRoute, setUserRoute, userGold, s
                 </ul>
                 {userRoute === 'signedIn' && <UserInfo userName={userName} userGold={userGold} setUserGold={setUserGold}/>}
             </div>
-            { userRoute === 'signingIn' ? <SubmitForm setUserRoute={setUserRoute} setUserName={setUserName}/> : ''}
+            {userRoute === 'signingIn' ? <SubmitForm setUserRoute={setUserRoute} setUserName={setUserName}/> : ''}
         </nav>
     )
 }

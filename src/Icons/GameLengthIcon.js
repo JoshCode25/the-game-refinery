@@ -5,7 +5,7 @@ const GameLengthIcon = ({lengthMin, lengthMax, iconObject}) => {
     const iconStyleObject = iconObject? iconObject : {};
 
     return (
-        <div>
+        <div style={{fontSize: '1.5rem'}}>
             {createClockIcon(iconStyleObject)} 
             {' ' + lengthMin}{lengthMin === lengthMax? '': '-' + lengthMax}
         </div>

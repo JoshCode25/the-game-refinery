@@ -2,27 +2,29 @@ import React from 'react';
 import './GameCard.css';
 import PlayerCountIcon from '../../Icons/PlayerCountIcon';
 import GameLengthIcon from '../../Icons/GameLengthIcon';
+import { ColorPalleteHex } from '../../Data/ColorPallette';
 
 function GameCard({game, goToGamePage}) {
     const cardWidth = '210px';
     const cardHeight = '260px';
     const {name, rating, playerMin, playerMax, 
         lengthMin, lengthMax, status, imageUrl} = game;
+    const {primary, secondary, complimentary1, complimentary2, dark, light} = ColorPalleteHex;
 
     let hoverHighlightColor; 
 
     const updateHighlightColor = (status) => {
         switch(status) {
             case "Digital Development" :
-                return hoverHighlightColor = '#f3a712';
+                return hoverHighlightColor = primary;
             case 'Prototype Development' :
-                return hoverHighlightColor = '#f56476';
+                return hoverHighlightColor = secondary;
             case 'Concept Development' :
-                return hoverHighlightColor = '#739e82';
+                return hoverHighlightColor = complimentary1;
             case 'Inactive' :
-                return hoverHighlightColor = '#5089C6';
+                return hoverHighlightColor = complimentary2;
             default :
-                return hoverHighlightColor = '#5089C6';
+                return hoverHighlightColor = primary;
         }
     }
 
@@ -31,7 +33,7 @@ function GameCard({game, goToGamePage}) {
     const playerIconObject = {
         width: 25,
         playerFill: hoverHighlightColor,
-        maskStrokeColor: "#232c33"
+        maskStrokeColor: dark
     };
     
     const clockIconObject = {
@@ -58,7 +60,7 @@ function GameCard({game, goToGamePage}) {
             </div>
             <div className='flex flex-column items-center' >
                 <img src={imageUrl} alt='Game Icon' style={{width: cardWidth, height: cardWidth, overflow: 'hidden'}} />
-                <h2 style={{position: 'absolute', bottom: '10px', backgroundColor: 'white'}} 
+                <h2 style={{position: 'absolute', bottom: '10px', backgroundColor: light}} 
                     className='f4 pb1 tc mh2'
                     >
                         {name.toUpperCase()}

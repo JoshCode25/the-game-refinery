@@ -5,7 +5,7 @@ const PlayerCountIcon = ({playerMin, playerMax, iconObject}) => {
     const iconStyleObject = iconObject? iconObject : {};
 
     return (
-        <div>
+        <div style={{fontSize: '1.5rem'}}>
             {createPlayerNumberIcon(iconStyleObject)} 
             {' ' + playerMin}{playerMin === playerMax? '': '-' + playerMax}
         </div>
