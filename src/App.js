@@ -1,5 +1,5 @@
 import Navigation from './Containers/Navigation/Navigation.js';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import HomePage from './Pages/HomePage.js';
 import Footer from './Containers/Footer/Footer.js';
