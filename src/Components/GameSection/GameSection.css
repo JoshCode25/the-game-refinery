@@ -1,0 +1,6 @@
+.gameSection {
+    width: 40rem;
+    height: 60rem;
+    border-radius: 10;
+    border: 2px solid black
+}
