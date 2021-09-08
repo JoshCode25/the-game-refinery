@@ -4,7 +4,7 @@ import './GameSection.css';
 const GameSection = (props) => {
 
     return (
-        <div className='gameSection'>
+        <div className={`gameSection ${props.sectionClassName}`}>
             {props.children}
         </div>
     )
