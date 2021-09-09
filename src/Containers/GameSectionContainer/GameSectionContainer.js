@@ -1,23 +1,51 @@
-import React from 'react';
+import React, {useState, Children} from 'react';
+import GameOverview from '../../Components/GameOverview/GameOverview';
 import GameSection from '../../Components/GameSection/GameSection';
+import HowToPlay from '../../Components/HowToPlay/HowToPlay';
 
 const GameSectionContainer = ({currentGame}) => {
 
-    const positionArray = ['firstSection', 'secondSection', 'thirdSection', 'fourthSection'];
+    //make function to cycle positionNumber on click to bring clicked section to front
+    //change positionNumber of clicked section to 0
+    //cycle through remaining sections and give them numbers 1 through 3
+    const positionObject = {
+        GameOverview: 0,
+        HowToPlay: 1,
+        Statistics: 2,
+        Comments: 3
+    }
+
+    const [sectionPositions, setSectionPositions] = useState(positionObject);
+
+    const updatePositions = (e) => {
+        console.log(e.currentTarget);
+    }
 
     return (
         <div style={{position: 'relative'}}>
-            <GameSection sectionClassName={positionArray[0]}>
-                <div>Overview of {currentGame.name}</div>
+            <GameSection 
+                sectionName={'GameOverview'} 
+                updatePositions={updatePositions} 
+                positionNumber={positionObject.GameOverview}>
+                    <GameOverview currentGame={currentGame}/>
             </GameSection>
-            <GameSection sectionClassName={positionArray[1]}>
-                <div>How to Play {currentGame.name}</div>
+            <GameSection 
+                sectionName={'HowToPlay'} 
+                updatePositions={updatePositions} 
+                positionNumber={positionObject.HowToPlay}>
+                    <HowToPlay currentGame={currentGame}/>
             </GameSection>
-            <GameSection sectionClassName={positionArray[2]}>
-                <div>Stats of {currentGame.name}</div>
+            <GameSection 
+                sectionName={'Statisctics'} 
+                updatePositions={updatePositions} 
+                positionNumber={positionObject.Statistics}>
+                    <div>Stats of {currentGame.name}</div>
             </GameSection>
-            <GameSection sectionClassName={positionArray[3]}>
-                <div>Comments/Forum</div>
+            <GameSection 
+                sectionName={'Comments'} 
+                updatePositions={updatePositions} 
+                positionNumber={positionObject.Comments}>
+                    <div>Comments/Forum</div>
             </GameSection>
         </div>
     )

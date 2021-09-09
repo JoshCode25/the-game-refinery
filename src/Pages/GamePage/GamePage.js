@@ -4,16 +4,11 @@ import GameSummary from '../../Containers/GameSummary/GameSummary';
 import GameSectionContainer from '../../Containers/GameSectionContainer/GameSectionContainer';
 
 function GamePage({currentGame}) {
-    const {rating, description, status} = currentGame;
     
     return (
-        <div className='flex'>
+        <div className='flex' style={{height: '70rem'}}>
             <GameSummary currentGame={currentGame}/>
             <GameSectionContainer currentGame={currentGame}/>
-            <div className='child-p-font125rem'>
-                <p>{`Status: ${status}. Rating: ${rating}/5`}</p>
-                <p>{description}</p>
-            </div>
         </div>
     )
 
