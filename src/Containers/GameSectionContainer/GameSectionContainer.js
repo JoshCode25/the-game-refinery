@@ -14,11 +14,20 @@ const GameSectionContainer = ({currentGame}) => {
         Statistics: 2,
         Comments: 3
     }
+    const positionArray = ['GameOverview', 'HowToPlay', 'Statistics', 'Comments'];
 
     const [sectionPositions, setSectionPositions] = useState(positionObject);
 
     const updatePositions = (e) => {
-        console.log(e.currentTarget);
+        const classArray = e.currentTarget.className.split(/\s/);
+        const sectionName = classArray.filter(className => !className.includes('Section'))[0];
+        const sectionLocation = positionArray.findIndex((className, index) => {
+            console.log(className);
+            if(className===sectionName) {
+                return index;
+            }
+        })
+        console.log(sectionName, sectionLocation);
     }
 
     return (
@@ -36,7 +45,7 @@ const GameSectionContainer = ({currentGame}) => {
                     <HowToPlay currentGame={currentGame}/>
             </GameSection>
             <GameSection 
-                sectionName={'Statisctics'} 
+                sectionName={'Statistics'} 
                 updatePositions={updatePositions} 
                 positionNumber={positionObject.Statistics}>
                     <div>Stats of {currentGame.name}</div>
