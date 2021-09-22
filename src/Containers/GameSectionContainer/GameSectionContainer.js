@@ -1,4 +1,4 @@
-import React, {useState, Children} from 'react';
+import React, {useState, useEffect} from 'react';
 import GameOverview from '../../Components/GameOverview/GameOverview';
 import GameSection from '../../Components/GameSection/GameSection';
 import HowToPlay from '../../Components/HowToPlay/HowToPlay';
@@ -16,18 +16,26 @@ const GameSectionContainer = ({currentGame}) => {
     }
     const positionArray = ['GameOverview', 'HowToPlay', 'Statistics', 'Comments'];
 
-    const [sectionPositions, setSectionPositions] = useState(positionObject);
+    const [sectionPositions, setSectionPositions] = useState({});
+
+    useEffect(() => {
+        setSectionPositions(positionObject);
+    }, []);
 
     const updatePositions = (e) => {
         const classArray = e.currentTarget.className.split(/\s/);
         const sectionName = classArray.filter(className => !className.includes('Section'))[0];
-        const sectionLocation = positionArray.findIndex((className, index) => {
-            console.log(className);
-            if(className===sectionName) {
-                return index;
-            }
+        const sectionLocation = positionArray.indexOf(sectionName);
+
+        const firstArrayPortion = positionArray.slice(sectionLocation);
+        const secondArrayPortion = positionArray.slice(0, sectionLocation);
+        const newPositionArray = firstArrayPortion.concat(secondArrayPortion);
+        const newPositionObject = {};
+
+        newPositionArray.forEach((position, index) => {
+            newPositionObject[`${position}`] = index;
         })
-        console.log(sectionName, sectionLocation);
+        setSectionPositions(newPositionObject);
     }
 
     return (
@@ -35,25 +43,25 @@ const GameSectionContainer = ({currentGame}) => {
             <GameSection 
                 sectionName={'GameOverview'} 
                 updatePositions={updatePositions} 
-                positionNumber={positionObject.GameOverview}>
+                positionNumber={sectionPositions.GameOverview}>
                     <GameOverview currentGame={currentGame}/>
             </GameSection>
             <GameSection 
                 sectionName={'HowToPlay'} 
                 updatePositions={updatePositions} 
-                positionNumber={positionObject.HowToPlay}>
+                positionNumber={sectionPositions.HowToPlay}>
                     <HowToPlay currentGame={currentGame}/>
             </GameSection>
             <GameSection 
                 sectionName={'Statistics'} 
                 updatePositions={updatePositions} 
-                positionNumber={positionObject.Statistics}>
+                positionNumber={sectionPositions.Statistics}>
                     <div>Stats of {currentGame.name}</div>
             </GameSection>
             <GameSection 
                 sectionName={'Comments'} 
                 updatePositions={updatePositions} 
-                positionNumber={positionObject.Comments}>
+                positionNumber={sectionPositions.Comments}>
                     <div>Comments/Forum</div>
             </GameSection>
         </div>
