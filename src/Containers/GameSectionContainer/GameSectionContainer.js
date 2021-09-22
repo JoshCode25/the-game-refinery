@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import Comments from '../../Components/Comments/Comments';
 import GameOverview from '../../Components/GameOverview/GameOverview';
 import GameSection from '../../Components/GameSection/GameSection';
 import HowToPlay from '../../Components/HowToPlay/HowToPlay';
+import Statistics from '../../Components/Statistics/Statistics';
 
 const GameSectionContainer = ({currentGame}) => {
 
-    //make function to cycle positionNumber on click to bring clicked section to front
-    //change positionNumber of clicked section to 0
-    //cycle through remaining sections and give them numbers 1 through 3
     const positionObject = {
         GameOverview: 0,
         HowToPlay: 1,
@@ -56,13 +55,13 @@ const GameSectionContainer = ({currentGame}) => {
                 sectionName={'Statistics'} 
                 updatePositions={updatePositions} 
                 positionNumber={sectionPositions.Statistics}>
-                    <div>Stats of {currentGame.name}</div>
+                    <Statistics currentGame={currentGame}/>
             </GameSection>
             <GameSection 
                 sectionName={'Comments'} 
                 updatePositions={updatePositions} 
                 positionNumber={sectionPositions.Comments}>
-                    <div>Comments/Forum</div>
+                    <Comments currentGame={currentGame}/>
             </GameSection>
         </div>
     )

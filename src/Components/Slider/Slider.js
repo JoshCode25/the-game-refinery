@@ -5,9 +5,15 @@ import sliderContent from './sliderContent';
 const sliderArray = sliderContent;
 
 function Slider() {
+    const [isDisplayed, setIsDisplayed] = useState(true);
     const [slideNumber, setSlideNumber] = useState(0);
     const [slideText, setSlideText] = useState('');
 
+    useEffect(() => {
+        setIsDisplayed(true);
+        return function cleanup() {setIsDisplayed(false)};
+    },[])
+    
     useEffect(() => {
         setSlideText(sliderArray[slideNumber].text.toUpperCase());
 
@@ -15,11 +21,13 @@ function Slider() {
     }, [slideNumber])
 
     const advanceSlide = () => {
-        let newSlideNumber = slideNumber + 1;
-        if(newSlideNumber > sliderArray.length-1) {
-            setSlideNumber(0);
-        } else {
-            setSlideNumber(newSlideNumber);
+        if (isDisplayed) {
+            let newSlideNumber = slideNumber + 1;
+            if(newSlideNumber > sliderArray.length-1) {
+                setSlideNumber(0);
+            } else {
+                setSlideNumber(newSlideNumber);
+            }
         }
     }
 

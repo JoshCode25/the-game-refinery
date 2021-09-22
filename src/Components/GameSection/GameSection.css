@@ -1,6 +1,6 @@
 .gameSection {
-    width: 40rem;
-    height: 60rem;
+    width: 35rem;
+    height: 50rem;
     border-radius: 1rem;
     border: 2px solid black;
     background-color: whitesmoke;
@@ -9,27 +9,27 @@
 .firstSection {
     z-index: 40;
     position: absolute;
-    top: 2.5rem;
+    top: 9.5rem;
     left: 0.5rem;
 }
 
 .secondSection {
     z-index: 30;
     position: absolute;
-    top: 0.5rem;
-    left: 3rem;
+    top: 6.5rem;
+    left: 3.5rem;
 }
 
 .thirdSection {
     z-index: 20;
     position: absolute;
-    top: 5rem;
-    left: 6rem;
+    top: 3.5rem;
+    left: 6.5rem;
 }
 
 .fourthSection {
     z-index: 10;
     position: absolute;
-    top: 1rem;
-    left: 9rem;
+    top: 0.5rem;
+    left: 9.5rem;
 }

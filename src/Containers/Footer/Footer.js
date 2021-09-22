@@ -4,7 +4,7 @@ const Footer = () => {
 
     return (
         <div style={{backgroundColor: '#5089C6'}} className='flex justify-center'>
-            <p style={{fontSize: '1.5rem'}}>Created by Josh Gannon</p>
+            <p style={{fontSize: '1.5rem', padding: '0.5rem'}}>Created by Josh Gannon</p>
         </div>
     )
 }

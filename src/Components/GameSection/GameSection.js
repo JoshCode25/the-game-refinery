@@ -9,7 +9,7 @@ const GameSection = (props) => {
 
     return (
         <div className={`gameSection ${sectionClass} ${sectionName}`} onClick={updatePositions}>
-            <div style={{margin: '1rem'}}>
+            <div style={{margin: '1rem 2rem'}}>
                 {props.children}
             </div>
         </div>

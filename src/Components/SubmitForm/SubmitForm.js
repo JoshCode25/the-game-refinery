@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import './SubmitForm.css';
-import {ColorPalleteHex} from '../../Data/ColorPallette.js'
+import {ColorPaletteHex} from '../../Data/ColorPalette.js'
 
 function SubmitForm({setUserRoute, setUserName}) {
     const [value, setValue] = useState('');
@@ -24,7 +24,7 @@ function SubmitForm({setUserRoute, setUserName}) {
   
       return (
         <div 
-            style={{width: '30%', height: 150, position: 'absolute', top: 100, left:'35%', backgroundColor: ColorPalleteHex.secondary}} 
+            style={{width: '30%', height: 150, position: 'absolute', zIndex: 100, top: 100, left:'35%', backgroundColor: ColorPaletteHex.secondary}} 
             className='tc br3 pa3 ma2 bw2 shadow-5 flex flex-column justify-center items-center'
             >
             <p className='f3 pv2'>Please enter your Name:</p>
@@ -32,7 +32,7 @@ function SubmitForm({setUserRoute, setUserName}) {
                 <label>
                     <input style={{borderRadius: '10px', height: '2rem', width: '200px'}} className='hideFocusOutline' ref={inputRef} type="text" value={value} onChange={handleChange} />
                 </label>
-                <input type="submit" value="Submit" className='f3 ph3 pv2 mb2 dib dim pointer' style={{border: 'none', backgroundColor: ColorPalleteHex.secondary, fontFamily: 'Segoe UI'}}/>
+                <input type="submit" value="Submit" className='f3 ph3 pv2 mb2 dib dim pointer' style={{border: 'none', backgroundColor: ColorPaletteHex.secondary, fontFamily: 'Segoe UI'}}/>
             </form>
         </div>
       );

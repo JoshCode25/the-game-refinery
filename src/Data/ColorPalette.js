@@ -7,7 +7,7 @@ Light - White: #FFFFFF rgb(255, 255, 255)
 Dark - Gunmetal: #232c33 rgb(35, 44, 51)
 */
 
- export const ColorPalleteHex = {
+ export const ColorPaletteHex = {
     primary: '#5089C6',
     secondary: '#f3a712',
     complimentary1: '#f56476',
@@ -16,7 +16,7 @@ Dark - Gunmetal: #232c33 rgb(35, 44, 51)
     dark: '#232c33'
 }
 
-export const ColorPalleteRGB = {
+export const ColorPaletteRGB = {
     primary: 'rgb(80, 137, 198)',
     secondary: 'rgb(243, 167, 18)',
     complimentary1: 'rgb(245, 100, 118)',

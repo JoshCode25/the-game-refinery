@@ -1,0 +1,12 @@
+.playButton {
+    font-size: 2rem;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    text-align: center;
+
+}
+
+.playButton:hover {
+    cursor: pointer;
+}
