@@ -11,13 +11,13 @@ const Navigation = ({userName, setUserName, userRoute, setUserRoute, userGold, s
         <nav className='flex justify-between pa2 items-center'>
             <Logo goHomePage={goHomePage}/>
             <div className='flex flex-column'>
-                <ul className='flex items-center justify-end m0 p0'>
+                <ul className='flex items-center justify-end m0 p0 hoverContainer'>
                     <li><p>Games</p></li>
                     <li><p>About</p></li>
                     <li><p>Contact</p></li>
                     <li style={{minWidth: '140px'}}>
-                        {userRoute === 'signedIn' && <p className='pointer' href='' onClick={signOut}>Sign Out</p>}
-                        {userRoute !== 'signedIn' && <p className='pointer' href='' onClick={signIn}>Set Name</p>}
+                        {userRoute === 'signedIn' && <p className='pointer' onClick={signOut}>Sign Out</p>}
+                        {userRoute !== 'signedIn' && <p className='pointer' onClick={signIn}>Set Name</p>}
                     </li>
                 </ul>
                 {userRoute === 'signedIn' && <UserInfo userName={userName} userGold={userGold} setUserGold={setUserGold}/>}

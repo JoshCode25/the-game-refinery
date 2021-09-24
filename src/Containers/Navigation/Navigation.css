@@ -9,7 +9,7 @@ li {
     padding: 0.5rem;
 }
 
-li:hover, a:hover {
+.hoverContainer > *:hover {
     color: #f3a712;
     /* opacity: .5;
     transition: opacity .15s ease-in */
