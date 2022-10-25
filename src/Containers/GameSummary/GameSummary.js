@@ -12,7 +12,7 @@ const GameSummary = ({currentGame}) => {
         maxLength: lengthMax
     }
 
-    const playGame = () => alert(`Playing ${name}!`);
+    const playGame = () => alert(`Playing ${name} feature coming... eventually!`);
 
     return (
         <div style={{margin: '1rem'}}>
