@@ -6,6 +6,10 @@
     background-color: whitesmoke;
 }
 
+.gameSection> *:hover {
+    cursor: pointer;
+}
+
 .firstSection {
     z-index: 40;
     position: absolute;
