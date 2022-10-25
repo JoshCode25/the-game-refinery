@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/the-game-refinery/static/css/main.7abc3431.chunk.css",
+    "main.css": "/the-game-refinery/static/css/main.eb3c3f55.chunk.css",
     "main.js": "/the-game-refinery/static/js/main.c7ee0d7b.chunk.js",
     "main.js.map": "/the-game-refinery/static/js/main.c7ee0d7b.chunk.js.map",
     "runtime-main.js": "/the-game-refinery/static/js/runtime-main.70cefc52.js",
@@ -12,7 +12,7 @@
     "static/js/3.f0312ed5.chunk.js.map": "/the-game-refinery/static/js/3.f0312ed5.chunk.js.map",
     "index.html": "/the-game-refinery/index.html",
     "static/css/2.75261d94.chunk.css.map": "/the-game-refinery/static/css/2.75261d94.chunk.css.map",
-    "static/css/main.7abc3431.chunk.css.map": "/the-game-refinery/static/css/main.7abc3431.chunk.css.map",
+    "static/css/main.eb3c3f55.chunk.css.map": "/the-game-refinery/static/css/main.eb3c3f55.chunk.css.map",
     "static/js/2.63062141.chunk.js.LICENSE.txt": "/the-game-refinery/static/js/2.63062141.chunk.js.LICENSE.txt",
     "static/media/farmGameIcon.731281c1.png": "/the-game-refinery/static/media/farmGameIcon.731281c1.png",
     "static/media/logo.084c63a5.svg": "/the-game-refinery/static/media/logo.084c63a5.svg",
@@ -22,7 +22,7 @@
     "static/js/runtime-main.70cefc52.js",
     "static/css/2.75261d94.chunk.css",
     "static/js/2.63062141.chunk.js",
-    "static/css/main.7abc3431.chunk.css",
+    "static/css/main.eb3c3f55.chunk.css",
     "static/js/main.c7ee0d7b.chunk.js"
   ]
 }
