@@ -12,7 +12,7 @@ function GameBox({gameList, setCurrentGame, setPageRoute}) {
     return (
         <div style={{position: 'relative'}}>
             <DividingHeader text={'Games'} lineColor={'#5089C6'}/>
-            <div className='flex flex-wrap'>
+            <div className='flex flex-wrap justify-center'>
                 {
                     gameList.map((game, i) => {
                         return (

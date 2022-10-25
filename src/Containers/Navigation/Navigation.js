@@ -8,7 +8,7 @@ import SubmitForm from '../../Components/SubmitForm/SubmitForm'
 const Navigation = ({userName, setUserName, userRoute, setUserRoute, userGold, setUserGold, signIn, signOut, goHomePage}) => {
 
     return (
-        <nav className='flex justify-between pa2 items-center'>
+        <nav className='flex flex-wrap justify-between pa2 items-center'>
             <Logo goHomePage={goHomePage}/>
             <div className='flex flex-column'>
                 <ul className='flex items-center justify-end m0 p0 hoverContainer'>
